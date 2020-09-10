@@ -20,31 +20,40 @@ class Traveler {
 }
 
 class Doctor extends Traveler {
-    constructor(name) {
-        this.name = name {
-        this.food = 1;
-        this.ishealthy = true
-        super;
+  constructor(name) {
+    super(name);
+  }
 
-        eat() {
-            if (this.food > 0) {
-              this.food -= 2;
-            } else {
-              this.ishealthy = false;
+  heal(traveler) {
+    traveler.ishealthy = true;
+  }
+}
 
-        }
+class Hunter extends Traveler {
+  constructor(name) {
+    super(name);
+    this.food = 2;
+  }
 
+  hunt() {
+    this.food += 5;
+  }
+
+  eat() {
+    if (this.food < 2) {
+      this.food = 0;
+      this.ishealthy = false;
+    } else {
+      this.food -= 2;
     }
-        
+  }
+  giveFood(traveler, numberoffoodunits) {
+    if (this.food >= numberoffoodunits) {
+      this.food -= numberoffoodunits;
+      traveler.food += numberoffoodunits;
     }
-   
-    class Hunter extends Traveler {
-        constructor(name) {
-            this.name = name {
-            this.food = 5;
-            this.ishealthy = true
-            super;
-
+  }
+}
 
 class Wagon {
   constructor(capacity) {
